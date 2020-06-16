@@ -8,6 +8,7 @@ import java.util.List;
 
 public class T297 {
     public static void main(String[] args) {
+        // 初始化一棵树
         TreeNode a = new TreeNode(1);
         TreeNode b = new TreeNode(2);
         TreeNode c = new TreeNode(3);
@@ -17,7 +18,7 @@ public class T297 {
         a.right = c;
         c.left = d;
         c.right = e;
-        System.out.println(serialize(a));
+        System.out.println(deserialize(serialize(a)));
     }
 
     // Encodes a tree to a single string.
@@ -47,7 +48,7 @@ public class T297 {
             l.remove(0);
             return null;
         }
-        TreeNode root = new TreeNode(Integer.valueOf(l.get(0)));  // 初始化根节点
+        TreeNode root = new TreeNode(Integer.parseInt(l.get(0)));  // 初始化根节点
         l.remove(0);
         root.left = deserialize(l);
         root.right = deserialize(l);
@@ -67,5 +68,15 @@ class TreeNode {
     TreeNode left;
     TreeNode right;
     TreeNode(int x) { val = x; }
+
+    // 重写toString方法
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
 }
 
